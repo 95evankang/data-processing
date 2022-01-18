@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/nav.css" />
   <link rel="stylesheet" href="css/forms.css" />
+  <link rel="stylesheet" href="css/data-processing.css" />
   </head>
  <body>
      <header>
@@ -20,14 +21,15 @@
      </header>
      
    <main class="wrapper">
+        <div id="output">Output goes here</div>
        <form method="get" action="" class="main-form">
         <div> 
             <label for="FirstName">First Name</label>:<br/>
-            <input type="text" name="FirstName" id="FirstName" placeholder="First Name" required="required" title="First name is required" />
+            <input type="text" name="FirstName" id="First_Name" placeholder="First Name" required="required" title="First name is required" />
         </div>
         <div> 
             <label for="LastName">Last Name</label>:<br/>
-            <input type="text" name="LastName" id="LastName" placeholder="Last Name" required="required" title="Last name is required" />
+            <input type="text" name="LastName" id="Las_tName" placeholder="Last Name" required="required" title="Last name is required" />
         </div>
         <div> 
             <label for="Email">Email</label>:<br/>
@@ -50,8 +52,8 @@
         <div>
                 <fieldset>
                     <legend>Would you like to join our mailing list?</legend>
-                    <label><input type="radio" name="JoiningMailingList" value="Yes" />Yes</label><br />
-                    <label><input type="radio" name="JoiningMailingList" value="No" />No</label><br />
+                    <label><input type="radio" name="Joining_Mailing_List" value="Yes" />Yes</label><br />
+                    <label><input type="radio" name="Joining_Mailing_List" value="No" />No</label><br />
                     
                 </fieldset>
         </div>
@@ -65,23 +67,23 @@
             </fieldset>
         </div>
             <div>
-                <label for="Address">Address</label>:<br/>
+                <label for="comments">Comments</label>:<br/>
                 <textarea name="comments" placeholder="Your opinion is important to us" cols="36" rows="4"></textarea>
             </div>
         <div><input type ="submit" value="Submit" /></div>
        </form>
-    
+       <footer>
+        <p><small>&copy; 2020-<span id="copyright"></span> by
+            Evan J. Kang, All Rights Reserved ~
+            <a id="html-checker" href="#">Check HTML</a> ~
+            <a id="css-checker" href="#">Check CSS</a></small>
+       </p>
+    </footer>
   </main>
      
+  <script src="js/data-processing.js"></script>
  <script src="js/main.js"></script>
      
- <footer>
-    <p><small>&copy; 2020-<span id="copyright"></span> by
-        Evan J. Kang, All Rights Reserved ~
-        <a id="html-checker" href="#">Check HTML</a> ~
-        <a id="css-checker" href="#">Check CSS</a></small>
-   </p>
-</footer>
 
  </body>
 </html>
