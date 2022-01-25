@@ -1,30 +1,85 @@
 //use location object to access querystring (address bar)
 const queryString = window.location.search;
-    
-//output to console    
-console.log(queryString);
-    
-//separate querystring parameters
-const urlParams = new URLSearchParams(queryString);
-
-/*
-
-        Print all data to id of output on page
-
-
-*/
-
 let myData = ''; //will store data for output
-urlParams.forEach(function(value,key) {
-    // will replace underscore with space
+let myCart = '';//will store info about Cart contents
+let myTotal = 0;//cost of items in cart
 
-    ////https://stackoverflow.com/questions/542232/in-javascript-how-can-i-perform-a-global-replace-on-string-with-a-variable-insi
-    key = key.split("_").join(" ");
-    myData += `<p>${key}: ${key}</p>`;
+console.log(queryString);
 
-         console.log(value,key)
-});
+if(queryString != ""){
+       
 
-myData += `<p><a href="index.html">Clear</a></p>`;
+        //separate querystring parameters
+        const urlParams = new URLSearchParams(queryString);
 
-document.getElementById("output").innerHTML = myData;
+        
+        urlParams.forEach(function(value,key) {//process data
+
+
+                if(value=="Cart"){//Add Price of Cart items
+                        //alert(value);
+                        
+
+                        switch(value){
+
+                        case "Widget":
+                                myCart += "Widget: $3.99<br />";  
+                                myTotal += 3.99;  
+                        break;
+
+                        case "Sprocket":
+                                myCart += "Sprocket: $5.99<br />";  
+                                myTotal += 5.99;  
+                        break;
+
+                        case "Thingy":
+                                myCart += "Thingy: $1.99<br />";  
+                                myTotal += 1.99;  
+                        break;
+                        }
+
+                }else{
+                        //build the shipping info
+                        key = key.split("  ").join(" ");
+                        function titleCase(value){
+                                value = value.toLowerCase().split(' ');
+                                for (var i = 0; i < value.length; i++) {
+                                    value[i] = value[i].charAt(0).toUpperCase() + value[i].slice(1);
+                                }
+                                return value.join(' ');
+                            }
+                            if (key == "First Name"){
+                                value = titleCase(value);
+                                console.log(value);
+                            }
+                            if (key == "Last Name"){
+                                value = titleCase(value);
+                                console.log(value);
+                            }
+                            if (key == "Address"){
+                                value = titleCase(value);
+                                console.log(value);
+                            }
+                            if (key == "City"){
+                                value = titleCase(value);
+                                console.log(value);
+                            }
+                
+                myData += `<p>${key}: ${value}</p>`;
+                }       
+        });
+
+        myCart = `
+                  <p><b>Cart Contents</b></p>
+                  <p>${myCart}</p>
+                  <p>Total: $${myTotal}</p>
+                 `;
+        
+        myData = myCart + "<p><b>Shipping Information</b></p>" + myData;
+        myData += `<p><a href="index.html">Clear</a></p>`;
+
+        document.getElementById("output").innerHTML = myData;
+} 
+
+
+
